@@ -15,10 +15,10 @@ class Application
       resp.write handle_search(search_term)
     elsif req.path.match(/cart/)
       if @@cart.length == 0
-        return "Your cart is empty"
+        resp.write "Your cart is empty"
       else
         @@cart.each do |item|
-          return "#{item}\n"
+          resp.write "#{item}\n"
         end
       end
     else
