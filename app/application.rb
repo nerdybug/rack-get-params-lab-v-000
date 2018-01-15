@@ -7,7 +7,7 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.match(/items/)
-      if cart == []
+      if @@cart == []
         resp.write "Your cart is empty"
       else
         @@items.each do |item|
@@ -18,7 +18,7 @@ class Application
       search_term = req.params["q"]
       resp.write handle_search(search_term)
     elsif req.path.match(/cart/)
-      cart.each do |item|
+      @@cart.each do |item|
         resp.write "#{item}\n"
       end
     else
